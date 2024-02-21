@@ -193,6 +193,159 @@ Non static are loaded when you creat Object,otherwise not--economy
 Static doent know anything about non-static
 Non static know static contents. 
 >variable,method and a class can be static.But class can be static only in the case of inner classes.
+=========================================================
+Day 2
+-----
+conditional statements
+Loops
+
+Character:
+
+char e = 'w';
+
+In ATMS and kiosk machines,java Internationalization feature.
+
+>>Java supports Internationalization -i18n
+>>java achived this through unicode supports.
+>>>if unicode is supported by any programming language then that language also supports i18n.
+>>UNicode---Universal Code.
+by default all editors supports english--ie UTF-8/ANSI.
+>>in java to display some thing on to screen,we need to use character.
+1 byte is sufficient to display some thing in english.But to display other than english language,we need have 2 bytes.
+So officlially,in java character occupies 2 bytes.
+https://unicode.org/charts/
+=================================
+>>Type Casting:converting from one datatype to another type.
+char e ='2';
+
+2 types of castings.
+1)Implicit: jvm will do convertion to another type on backend. 
+2)Explicit: developer shld write necessary logic to do conversion.
+
+Small talk,eiffel---pure object oriented
+
+=======================================
+>>Wrapper classes:wrapper classes provides a mechanism to convert primitive to object and vice versa.
+1.5 version
+
+in java there is primitive data type support.
+>When we say object oriented ,it shld nt support primitivrs,but java supports.Later they realease wrapper classes.
+
+javac -target <version no> -source <version no>
+
+int---Primitive--- Integer--wrapper-class represtation of int.
+char---Character
+
+primitive to object conversion is called as autoboxing.this is automatic ie JVM will lookafter.
+reverse is unboxing.
+
+>>Reason why it shld be Object?
+Serialization and deserialization
+
+Observations
+=============
+1)USe getNumericValue() method maily for unicode characters
+2)BAsed on the given data,wisely choose which wrapper class suports us to perform casting.
+
+
+>,<,>=,<=,||,&&,%,/
+Conditional Statements:
+=========================
+if--
+if-else
+Switch:
+--------
+>switch can have any no of cases.No limit
+>recommend to add default for every switch case.
+>Every case shld have break.break will instruct JVM to come out of switch statement when it reaches end of the case..
+>from java 1.8 ,we can use strings even in switch.Only int values, strings or enum variables are permitted.
+>Switch within switch is possible.
+
+>>Strings cannt be compared using ==.In javascript for deep comparision,we are having === operator.But in java we dont.Instead we can use equals method.
+
+We can concatinate 2 strings using "concat" function.else we can also use "+" symbol.
+Stringbuffer stringbuilder
+Every Object in java will have unique no for identification like aadhar no for us.
+
+In java to find out that unique no /address,we need to use hashcode()
+hashcode is unique across objects,but it might be same only in some cases
+Note: primite datatypes dont have hashcode.
+in Strings there is a concept called as String literal/Constant Pool.This Pool concept is based on hashcode techqnics.
+
+Loops:
+======
+
+A loop is a block of code that executes repeatedly until condition fails.
+1)for 
+2)while
+3)do-while
+4)for each----Collections
+
+
+Eclipse----->Git---->Github---->Security OWASP Scanner-->Sonarqube(code quality testing tool)--->Jenkins--->test server---->Docker hub--->Tomcat
+
+Sonarqube will scan your project for duplicate code,security voilations,coding vioalations,bugs..etc.if voilation is more than the allowed percentage,simply it will not qllow us to move to next layer.
+
+if any duplicate code is a found by sonarqube,it will not allow your code move to next phase,then ultimetly code will fail.
+>>>
+break: it will break exceution of the loop ie it will come out of the loop.
+continue:it will not come out of the loop,but it will skip the exceution of the block for given condition.
+
+>Nested Loop:
+loop with in loop is called as Nested Loops.
+
+Return
+=======
+>return is used for returning some values to called environment.
+>return also will return control back to calle environment.
+>if we add retrun in main,u are passing controll to JVM.
+
+final is used for declaring constants.
+Rules to follow while writing class:
+---------------------------------------
+>always make sure variables in a class are private.
+>methods shld be public.
+>Classname first letter shld be upper case.
+>always a functionsubstring shld start with upper case
+>Always constants shld be in Upper case.A singletter canot be a constant.
+>>>Always constants shld be initialized.
+
+Java Beans(POJO)
+================
+>>pojos are mainly used in Spring ,Springboot and JPA frameworks.
+>pojo stands for plain old java object.
+>Pojo means a class with below rules and regulation.
+-------
+1)Pojo classses will not have main method.
+2)Property shld be private and methods shld be public.
+3)pojo classes shld have setters and getters for each property.
+4)Pojo classes shld not implement interfaces.
+5)We shld not write business or db logic in pojo.
+6)Pojo classes will not have any abstract method.
+7)It shld have no argument constructor.
+8)static is not allowed in pojo.
+9)Always pojo classes shld be in a sperate package.never keep pojo in default.
+
+setter for pushing
+getter---for pulling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
