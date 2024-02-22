@@ -297,7 +297,7 @@ loop with in loop is called as Nested Loops.
 Return
 =======
 >return is used for returning some values to called environment.
->return also will return control back to calle environment.
+>return also will return control back to called environment.
 >if we add retrun in main,u are passing controll to JVM.
 
 final is used for declaring constants.
@@ -328,6 +328,218 @@ Java Beans(POJO)
 
 setter for pushing
 getter---for pulling
+=========================
+Day 3
+------
+>>OOPS Concepts including exception handling
+OOPS-Object oriented Programming Synopsis/system
+>Java supports OOPS.
+OOPS Concpts:
+1)Inheritance
+2)Polymorphism
+3)Encapsulation
+4)Abstraction
+5)Class
+6)Object
+7)Message Passing
+
+In oops,
+.-entire concept is based on Object.
+Class:
+======
+>A class is a combination of State and behaviour.
+state---properties that we define in a class
+behaviour--means functionality
+>Electrical switch---Object
+>If we are having Object ,then as per OOPS,class shld also exist.
+CAR(class)----->Sports Car ---->Normal Car(Breeza,Zen,...etc)
+Normal car belongs to CAR.
+>ON/OFF---Properties
+if ON--then switch shld work
+if OFF--Power supply shld stop
+>>Class comes to existence /life if we create Object in OOPS.
+
+If object exits,then class shld also exist.
+If class exist,there is no rule that Object shld exsist.But there is no use of class with out Object.
+
+>IN OOPS,memory for class will be allocated only if we create Object.Otherwise there is no use of class.
+>>Memory for a class will be allocated when we create Object.
+
+Syntax for Object:
+
+classname <referencename> =  new classname();
+referencename can be given any name.
+
+>>Security:
+3 types of securities
+1)Code level security-----private public protected.---developer
+2)App level security-------DEVOPS/IT team with developers
+3)Server level Security----------DEVOPS/IT team/Hosting team
+
+>>>When ever JVM encounters "new" in the code,that indicates it shld allocate memory for the object.
+
+When we create an Object,below tasks will be done by JVM.
+1)Memory allocation.
+2)reeference creation
+3)Can call constructor
+4)Can call unnamed blocks ie.. when we create an object then unnamed blocks will be called automatically.
+
+Note: Static blocks will be called automatically.Static is no way realated to Object.
+
+>>static blocks are used mainly for early loading.
+we mainly use this for intilializing DB/N/w drivers in jdbc and JPA.
+>>>Always non-static contents shld not be called from static directly.
+
+Every Object in OOPS,will have "SBI".
+S----state-----property that we define in a class.
+B---behaviour-----functionality
+I----Identity----name of the Object
+
+Abstraction:
+=============
+>>Abstraction is a process of hiding the implementation details and showing only functionalty to the end user.
+To achieve abstraction in java
+1)Interfaces
+2)Abstract classes
+
+Abstract method:
+=================
+Method without body/logic is called as abstract method.
+
+Concrete Method: Method with body is called as Concrete Method.
+
+Concrete Class: class with only concrete methods is called as Concret Class.
+
+Abstract Class:
+=================
+>>class with only abstract methods is called as pure Abstract Class.
+>>>>class with only abstract method and concrete methods is called as partial Abstract Class.
+>>we are use the keyword "abstract".
+>>As there is no body for abstract methods,we cannot create Object.
+>>In reality,always abstract classes shld be in a seprate package.
+
+Interfaces shld be in separate package.
+abstract classes shld be in separate package.
+POJO shld be in separate package.
+main class shld be in separate package.
+
+>IF we want to implement logic for abstract methods then we need to extend that abstract class.
+>>In pure abstract classes,dont add any constructor.
+
+>>Constructor:
+==============
+>A constrcutor is a member function whose name is same as Class name but without return type.
+>constrcutor wont return anything.
+>constrcutor are mainly used for intilializing class level variables.
+>Even void is not alloweed for Constructor.
+>if we are not adding any constructor,then JVM will add default constructor at runtime.
+
+Overloading: Overloading means using same name multiple times but with difrrent parameters.
+>Overloading occurs within a class,not outside the class.
+Rule:
+While overloading makesure no 2 functions/constructor has same method signature.
+
+Overiding: If subclass has same method as declared in Parent class ,it is called as Overiding.
+
+Rules for Overiding:
+1)final methods cannt be overriden.
+2)static methods cannt be overriden.
+3)Private methods cant be overriden.
+4)overriden method shld return same datatype or subtype.
+5)Use access spicifier properly.
+private methods will not participate in inheritance.
+
+Cannot reduce the visibility of the inherited method from Bank.
+>>>a Constructor can be public/private and even protected,but with some rules.
+1)if a constrcutor is private make sure you are not using inheritance.
+
+Interfaces:
+========
+An interface is similar like a class but with only abstract methods.
+Rules:
+>Any method that we declare in a class is by default abstract.
+>Any variable that we declare in interface is by default public static final.
+
+>>Interfaces shld be in separate package
+While naming interfaces frollow below rule.
+i<interfacename>
+
+for impl,
+<interfacename>Impl
+
+Inheritance:
+============
+>proces of inheriting properties and behaviour from base class to child class is called as Inheitance.
+>Advantage is Code resuability.
+>>IN multiple inheritance,We will come across "Diamond Problem".TO overcome that we need to use "interfaces" in java.
+  OOPS inheritance is called as IS-A relationship.
+rules:
+1)Constructors are not inherited.
+2)We cannt inherit private members.
+3)Java doent support Multiple inheritance directly.
+4)Static variable are not inherited.
+
+Note: In java for evry class there is a base class called as
+Object.
+https://www.oodesign.com/
+When we want to call base class method from child class ,we can use 
+SUPER keyword.
+>super can be used to call super class constructor.
+>always super shld be in firstlline of the block.
+-------------------------------------------------------
+Exception:
+=============
+Whenever exception arises,nornal flow of execution stops.To handle such suitations,we need to use Exception handling.
+>>Throwable>Object
+>Wen u move to project,95% of the time you will deal with USER defined exceptions.
+Zeta
+>NullpointerException  ZetaNullpointerException
+
+>try
+{
+}
+catch()
+{
+}
+finally
+{
+}
+
+Exceptiond are not used to stop errors.
+
+try--catch--finally
+try--finally
+try---catch
+
+throw and throws
+User defined exceptions
+try with try
+try can be with in catch
+try with in finally block
+>>Rules to follow while writing exceptions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
