@@ -371,7 +371,7 @@ classname <referencename> =  new classname();
 referencename can be given any name.
 
 >>Security:
-3 types of securities
+3 types of securitie levels.
 1)Code level security-----private public protected.---developer
 2)App level security-------DEVOPS/IT team with developers
 3)Server level Security----------DEVOPS/IT team/Hosting team
@@ -517,6 +517,459 @@ try with try
 try can be with in catch
 try with in finally block
 >>Rules to follow while writing exceptions.
+====================================================
+Day 4
+------
+>Checked Exception--compile time
+>UnChecked Exception---runtime
+
+>Always while displaying exceptions follow below rules.
+1)display at which line exception occured.
+2)package and classname of the exception.
+3)User Friendly Messages.
+
+Note: In reality,we shld avoid using System.out.println.
+Instead use Log4j or sl4j tools.
+>if we write 50 time System.out.print.
+
+>If we know that code might throw the exact exception,ten never use Excception object in catch block.
+
+int a = 34/0;----->Arithmetic exception
+
+String a = "Srini";
+Integer.parseInt(a);-----NumberFormatException
+
+int e[]= new int[5];
+e[45]=56;//ArrayIndexOutOfBoundsException
+
+throw---if developer want to throw an exception manually.
+
+Rules for User defined Exceptions:
+===================================
+1)Always custom exceptions shld be ina separate package.
+2)we need to call super class constructor in custom exception class.
+3)We shld add only user friendly messages ,while displaying.
+ALwya we need to extend Exception class.
+
+how do JVM recognize which exception was throwed from which class,method,lineno?
+
+printStackTrace has inbult mechanism to display values on to screen.
+
+Use throws if you dont want to handle exception manually thru try and catch.
+
+finally block---irrespective of the condition,any thing that we declare in finally block will be executed.
+
+Example": Db connection,N/w connection objects closing shld be done in finnally block.
+
+finally
+{
+}
+
+Static Imports: 1.5 version
+
+drawback: no readability,leads to more confusion
+
+>>If a variable can hold only single value ,then it is called as Scalar type.
+
+Array is a reference datatype.
+int,float,double  primitive datatpes
+>>In Array we can store similar values.
+>Java provides us one predefined class callled as Arrays.
+array a ,b
+
+i want to copy data from a to b?
+
+Arrays.copy
+
+Arrays cannot grow., because if size is fixed.We cannt add diffrent trypes of value.
+
+To overcome arrays challenges,we got collections into the market.
+>in java collections are part of util package.
+
+Advanatges
+--------------
+>collectionsara similar like array but it can grow and shrink.
+>In collections we can store diffrent types of values.
+>java provides diffrent collection interfaces.
+List--ArrayList and Vector
+Map
+Set
+
+>When we want to use a particular collection for a project,we need to identify right collection based on below parameters.
+1)Ordering
+2)Allows Null values
+3)Allow duplicates
+4)is it Thread Safe
+
+Req:
+
+I want to store multiple values with no limit.while inserting it shld allows even duplicates.
+
+Note: Always use Objects in collections.ie insert only Objects.Because collections were designed for Objects not for primitive datatypes.
+
+>>toArray--is used to convert vector to array.
+addALL----
+
+using add method,we can insert only 1 element.
+using addALL method,we can insert collection at a time.
+>>Collections shuffle,rotate..methods will work only for List and its implementation classes.
+>>Collection will be resized automatically,if it exceeds the limit.ie it can grow.
+>Vector obj1 = new Vector();
+
+suppose we want to restrict vector to accept on ly specific datatype.Then we need to use Generics/templates.
+
+Generaics will make your collection type-safe.
+<>
+>>ArrayList:
+==============
+>order is maintained.
+>From collection to display data,java had given different ways.
+1)Loops
+2)Iterator
+3)Enumerator
+4)for each
+>Arraylist maintains insertion order.
+====================================================================Set Interface:
+================
+>>By default all collections in java implements serializable and Cloneable.
+>>HashSet:
+>default capacity: 16
+>default load factor is 0.75 ie 75%
+>set doent allow duplicates.lf we try to insert duplicates,simply it discards duplicate value.It will nevr throw error messages. 
+>Insertion order is not maintained.
+Null is allowed.
+>>Is not thread safe.
+>Stream was introduced from Java 8
+>We canview rStream API methods even from ns like filter,predicate...etc,
+
+When hashset will be resized?
+sol)capacity as 16 and load factor as 0.75 ie 75% of capacity
+which means  whenevr a new value is added to hashset,its size is checked against loadfactor and if size exceeds load factor then only it will go for resizing.
+s 
+capacity=10
+load fator =75%--best metric
+
+what is 75% in 10.currently ur hashset size is 4 elemnts,5th ,6th 7th?
+Note: resizing is tedious job for JVM ie heavy weight operation.
+>In projects,either architects or customer will decide the load fator and capacity.
+
+TreeSet:
+==========>
+>Treeset is not syncronized.
+>will not allow null element.
+>maintains ascending order.
+
+wherever u see any colletion with tree,that indicates will display elements in ascending order and null is not allowed.
+
+>>>Clone might throw and exception.So,based the logic which we are writing,some time we need to surrender the code with try-catch.
+
+Hashtable:
+===========
+>doesnt allow null key or value.
+>default initial capacity (11) and load factor (0.75).
+>It is thread safe.
+
+HashMap:
+=========
+>>>default initial capacity (11) and load factor (0.75).
+>It is not thread safe.
+>allows null values.
+>>can have only 1 null key and 1 null value.
+ComputeIFpresent/absent-----Java8 lambda ,Functional interfaces and Stream API
+
+TreeMap:
+=========
+>>maintains ascending order.
+>It is not thread safe.
+>no null keys and values.If inserted it will throw NULLPOINTER Exception.
+>>Treemap uses Navigablemap for sorting the elements in collections.So try to avoid null in collections.
+>In treemap,always makesure all keys are of similar types.Otherwise
+it will lead to ClassCastException.
+
+Note: As null leads to more issues in projects,it may lead to app crash also.To get ride of these problems,Oracle had released "Optional" feature in java8.
+Optional class will check whether object is empty or not.
+
+2)Nullpointer exceptions if not handled carefully in servers,it might lead to server crash.
+
+We can  pass collection as a value.
+==========>
+assume there is an array with 6 elements ie {bat,rat,cat,mat,TV,Laptop}.
+Deisgn a hashmap whose values are same as array element  value and whose keys are index no in hashmap.
+
+2)Assume there is a hashtable with below values.
+Srinivas,srinivas,laptop,Laptop,Edu,Tech.Design code which shld display index of duplicate values(pls ignore case).
+
+3)create an program,which will display
+latitude and longitude based on cityname.
+Use Map . 
+---------------------------------------------------
+Hyderabad,Mumbai,Chennai,Calcutta,Bihar
+
+i/p:Hyderabad
+o/p: lat:25.096073 & long: 19
+------------------------------------------------------
+JDBC:
+=====
+flat file--->Excel--->Dbase2---->Dbase3---->Access---->Oracle--->mysql........etc
+
+Indian Army---->Dbase2---->Dbase3---->Access
+
+
+Driver: Driver is a S/w Program.
+
+
+Java Program------------------------------->Database
+
+directly?No
+
+we need a translator ie driver.
+for interacting with bckend,oracle had released JDBC into the market.
+
+ODBC---open db connectivity---odbc was  designed in C/C++.So platform dependent.These drivers can be used only fro windows.
+specially designed for microsoft products only.
+
+if u want java app to connect to Excel,MS Access db,notepad.
+
+JDBC---Java db connectivity---Java----Independent--jdbc will work on any o/s.
+
+java program---------->insert data to db----->Mysql
+
+      		via JDBC Drivers
+
+jdbc drivers are of 4 types.
+1)JDBC-ODBC Bridge Driver---removed from java8
+2)Native API driver(partially java driver)
+
+disadvantage:
+We need to install native driver in each machine.
+
+3)Network Protocol driver(full java driver)
+drawback:maintainance cost is very high.
+developer sld write more code.
+Performance wise it is slow
+
+4)Thin driver(full java driver)---this is used in Development
+o>performamce  is v good.
+>No need to install any software  on machines.
+disadvanatge:
+we need configure db specific driver either in maven or build path.
+
+>There is no universal drivers for JDBC ie for databases.
+====================
+java --Oracle comp
+Database---Oracle,Mysql,tDb2,Sybase......etc
+
+Differnt dataabses,different approaches.
+
+>>From java8,jdbc-odbc driver support was totally removed.
+
+To deisgn a JDBC program,we need to know JDBC API.
+-----------------------------------------------------
+Steps to Connect to Database from Java App:
+========================================
+
+Whene we want to establish connection to db using driver,then we need to provide dbname,db portno,db username,db password.
+
+>after authentication,a db session will be established between app and db.
+>If session is not established transactions or operations cannt be performed between app and db.
+>	signout means invalidating sessi on with server.same operation we need to perform while doing JDBC operations.
+
+--->
+Large Object datatypes:
+
+large object size will vary from db to db.
+
+1)Blob:binary large object----images,audio,video-- 4gb
+2)Clob: character large object---pdf,document---2 gb
+3)NClob: n no of clob object
+
+create table linkedin(username char(100),password char(100),resume clob);
+
+>>JDBC supports large objects.
+example:one jdbc program to store an image and  retrive an image.
+==========================================================
+ResultSet object/collection which can hold ur data temporarily.
+Always connection closing shld be done in finally block.
+CRUD
+C-create
+R--select
+U-Update
+D-delete
+Code for driver is available under connector.
+Class.forName--will load ur driver class object into memory.
+DriverManager Class will establish connection with db based on meta data that we provide.
+executeQuery---when we want to retrive data from db.ie select
+executeUpdate---when we want to perform insert,update and delete.
+above methods are part of Statement interface.
+
+com.mysql.jdbc.Driver--- for mysql version 5.x and 6.x
+com.mysql.cj.jdbc.Driver--- for mysql version 8.x
+>Never display passwords in plaintext.if we provide in plain text,it is a security breach.
+
+It leads to code injection.We need to add passwords in encrypted format.
+>>for this we can use the tool "VAULT".
+https://developer.hashicorp.com/vault
+>>Till now,we had executed create,update operations on static data.But what if i want to give the data as a input?
+
+In jdbc,Statement,PreparedStatement and CallableStatement.
+PreparedStatement:
+======================
+>can be used for giving input at runtime.
+>Preparedstatement can be used to avoid SQL injections.
+>it helps to avoid app crashes because of improper usage of escape characters.
+>In terms of performance of executing the query,these are faster.
+wherever we want to insert data at runtime there use the Symbol ?.
+
+In java there date package.
+=====================
+App Name: Abcd Bank
+
+if a person wants to open a new bank account,
+he need to provide some details.Assume all details are there.
+
+Design a program like menu app,
+which shld allow to 
+1)open new account
+2)Modify the Personal details.
+3)if balance <100,it shld throw "Less balance Message"
+4)if he tries to close the account within 60 days of opening the acoount,it shld throw a exeception msg "You are not allowed to close account ".
+5)display acount info,based on accountno.
+jan30 2024
+
+current date--- 27-Feb-2024
+--------------------------------------------------
+Java,java.util.Date and java.sql.Date
+jdbc:mysql
+
+jdbc is called as main protocol
+mysql is called as sub protocol.
+
+sub protocol will change based on database.
+
+>create table profile(name char(200),photopic blob);
+
+>To call PLSQL components from JDBC,we need to Use CallableStatements.
+
+DELIMITER &&  
+>>CREATE  or replace PROCEDURE myprocedure()  
+BEGIN  
+    SELECT * FROM employee WHERE empid=101;  
+  
+END &&  
+
+>>Procedure wont return any thing.Only functions will return values.
+
+Note: CallableStatement.execute() will return true,if it returns Resultset object,otherwise false.
+
+>>In the above example procedure is just returning single string not a resultset,so it is execute method returns false.
+======================================
+MultiThreading
+---------------
+>>Multithreading means ability to perform multiple jobs/tasks at a time simultaneously.
+>Job means a task that we need to complete.
+>Parents they perfom multitasking.
+
+To work on multithreading,we need below:
+1)We need a Process
+2)enough Memory
+3)Processor (high end processsor)
+if processor is of low end  or old one then  it might not support multithreading.
+
+O/s----Parent Process
+JVM---Child Process
+Programs that we are run are ---Threads
+>>To create a Thread ,first we need to have process.
+Without process,we cannt create Thread.
+>Threads uses the memory of Process.
+
+Parent---->Process
+Child------>Thread
+>Java supports only multithreading but not multiprocessing.
+>If you want to work on multiprocessing,we can go with Python.
+
+>Every java Program is a Thread to JVM.
+>>To work on Multithreading in java First we need to know Thread Lifecycle.
+>thread is independent.ie threads can work independently without depending on other threads.
+?>IN java,to create a Thread,we are having 2 ways.
+
+1)extending Thread class
+2)implementing Runnable interface
+
+>Any thread that we create will have a name and id.
+>Who will give that name and id?
+ans)JVM
+
+Every process will have PID--process id
+Threadid
+>No process-ids can be same.
+>We can also priorities for Threads to run.
+>Even though if 2 thread are having same,it cannt have same id.
+>We cannt set threadid manually.Only JVM will do that.
+>We can also set priority for threads as well.
+1--MIN Priority
+5--Normal priority
+10--MAX Priority
+
+Based on priority threads will run.
+>>It is changing based on available memory and CPU.
+Whoc takes the responsibilit of running the thread lifcecycle in JVM?
+ans)In JVM there is a component called as Thread 
+
+Thread.sleep:
+===============
+>>if we want to hault the threadfor some given time then sleep is used.
+>if the time is completed then it will continue from where it left.
+Thread.sleep(long mls)
+
+>if one thread completes then only another thread shld start?
+ans) LOcking mechanism
+mutex
+semaphores
+
+>>sleep will not perform locking mechanism at all.
+
+Locking mechanisms are applicable only for OBject.
+>If we want to perform Locking on thread,then we need tto use OBject class thread methods like notify,notify all,wait and Synchronize blocks.
+>join:
+When a join is invoked,the current thread stops its execution and thread goes to wait state.
+
+>A dead thread cannot be restarted.
+>A thread which is temporarily stoped can be restarted use start() method.
+
+Note: try to avoid using stop() method.It leads to memory/CPU issues.
+
+>Threads will be killed automatically,once program execution is completed.
+>start/run/join/sleep/stop
+>>Join it is not using any locking.it is using lifecycle.
+
+To use notify and wait,we need to use syncronized blocks.
+>Thru wait and notify we can achive locking.
+>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
