@@ -944,7 +944,241 @@ Note: try to avoid using stop() method.It leads to memory/CPU issues.
 
 To use notify and wait,we need to use syncronized blocks.
 >Thru wait and notify we can achive locking.
+>>wait(): The wait() method is used to make a thread voluntarily give up its lock on an object, allowing another thread to execute code within a synchronized block. The thread that calls wait() will enter a waiting state until another thread calls notify() or notifyAll() on the same object, allowing it to resume execution.
+
+notify(): The notify() method wakes up one of the waiting threads on the same object. If multiple threads are waiting, it is not specified which one will be awakened. The awakened thread will then compete for the lock on the object.
+---------------
+The general syntax of using the wait() method for synchronization is shown below.
+synchronized(object)
+{ 
+    while(condition is false)
+    { 
+        object.wait();
+		
+    }
+     
+    //do the task
+}
 >>
+=======================================================
+Vault will do encryption of any text ie sensitive data.
+>Vault is part of security tools in Devops.
+DAEMON Thread in java?
+ans) DAEMON threads are the threads which run on background.
+DAEMON thread----disk and execution monitor thread
+>we can also make a thread as daemon thread.
+i want to perform processing tasking,then do i need to go with foreground or background?
+ans)background
+
+when we deal with os threds and server threads we will use daemon threads.
+ 
+  Transaction?
+ 
+int a= 1;
+
+ a++;
+ 
+ if thread1 thread2 thread3 tries to modify a?
+ then will happend?  it leads to inconsitencies ie Dirty read occur.
+ 
+Here a is called as Shared Variable.
+
+Shared variable/resource:if multiple threads are trying to access same variable and trying to perform some operations,then that resource is called shared resource.
+
+Example: Printer in a ORganization
+
+Synchronized blocks.
+====================
+
+Syntax: 
+Synchronize(resourcename){
+}
+
+The above issues that we stated above can be handled via ld Synchronize block.
+>Synchronize shld be used as combination with wait and notify.
+>Synchronize block make sure only one thread is accessing the resoiurce at same time.If another thread tries to modify then it will not allow because Synchronize block will have a lock mechanism.
+ 
+ notify and wait
+ 
+ ATM
+ 5 Threads---tx
+ t1 t2 t3 t4 t5
+ t1 after the operation he will notify t2.
+ t2 after the tx ,he will notify t3.
+ if t1 is doing tx,then t2t3t4t5 shld be in waitiing state.
+ 
+ notify is used to notify single thread.
+ notifyAll  is used to notify all threads that are in waiting condition.
+ Threads that ar waiting will be in Thread Queue.
+ 
+ Which methods in Thread will have locks?
+ notify,wait or notifyAll
+ true---resource is in use
+ false---resource is free.
+ ---------------------------------------
+ Serialization and Deserialization
+ ==================================
+ Serialization : process of saving state,behaviour and identity of an object into a file or db is called as serialization.
+ 
+ Deserialization: process of restoring the object to previous state is called as deserialization.
+ 
+ Rules:
+ 
+ 1)Only non static data memebrs are saved thru serialization.
+ 2)static contents cannt be serialized.
+ 3)transcient variables cannt be serialized.
+ 4)Constructor of an object is never called when an object is deserialized.
+ 
+>In java We need to use Fileoutputstream  and ObjectOutputstream.
+
+Use case: mainly in networking and Gaming apps. 
+===========================
+java8
+-------------
+new features
+1)Lambda expressions
+2)Stream API for Big data
+3)Method reference---::shld be used with lambda expression
+4)Functional interfaces(SAM single abstract method): an interface with only one abstract method is called as functional interface.
+We can have static and default methods as well.
+
+To declare functional interface we need to use @FunctionalInterface annotation.
+
+
+@FunctionalInterface    //annotation
+interface SamExample1 {
+void display();
+}
+
+
+interface SamExample4 {//this not SAM
+void display();
+void display1();
+}
+5)enhancements in JDBC
+6)static methodsin interfaces: till jdk1.7 we cant have static methods in java.But from jdk1.8 we can also write static methods.
+7)default method in functional interfaces
+8)Optional 
+
+lambda+static method+functional interfaces
+
+When we work on Big data,we need to work on structured and unstructured data.Some time we need to perform some computations.
+
+To perform these computations,java8 came up with lambda functions.
+
+lambda shld be used as a combination with functional interfaces or Stream API.
+
+Java8,they released enhanced Loop called as ForEach.
+Lambda Expression:
+()->
+
+drawback: No readability
+For small operations dont use lambda.
+56 new features
+Advanced java or Microservices
+==================================================================
+Spring
+========
+prereq:
+===========
+Java: jdk1.8
+Eclipse for Spring
+Springboot: Jdk1.8,Eclipse/Spring STS
+Apache Maven/Gradle is mandetory
+>mainly developer shld know what is configuration files?
+
+Maven:
+=======
+Before Maven there is a tool called as "ANT"
+ANT>>>>MAven>>>>>Gradle(faster)
+>>Gradle is new to market.Already majority companys are using maven from last 8 years.
+>>Gradle internallyy uses maven repo.
+>Maven is a build tool.
+>in maven dependency means a jar file.
+Advantages:
+1)we can build the project.
+2)It can handle dependencies.
+3)Handle transtive dependencies.
+4)we can perform packaging of project into jar/ear/war.
+5)Can install plugins that are required for Project.
+......etc
+
+Disadvantages: Performance is slow.
+
+Maven versions comes in 2 flavours:
+>>maven 1.x---outdated
+>>maven 2.x
+>>maven 3.x 
+>>Maven has its own public repo.https://mvnrepository.com/
+
+Any 3rd party dependencies that are needed for the project can be handled by MAVEN.Maven after reading pom.xml files,it will start downloding the dependencies from internet.
+>>Maven first checks local repository before downloading the dependency from internet.Assume dependency is not available in local repo,then it will download dependencies from public repo.
+
+Local repo: repo that was created and available in our PC.
+local repo name is ".m2".
+Public repo: repo that is on cloud for public use.Anybody can access public repos.
+Corporate repo: repo that were created for an organization for development ;for internal use is called as Corporate repo.
+>To create a corporate we need to use below tool.
+Jfrog artifactory,Sonatype Nexus
+>>Always corporate repo are more secure.
+
+Public repo are not secure becase they are public.
+
+groupid means package name
+artifcatid means project name.
+>Every dependency will have artifact id and groupid.
+>Maven has 2 config files.
+1)POM.xml
+2)settings.xml
+
+----i/p---->Maven
+    pom.xml
+	>When we run the maven project,maven wwill first read pom.xml file.
+	>we shld have only 1 pom.xml file per a normal project.
+	>Only in the case of Multi-module projects we can have multiple pom.xml files. 
+	>Multi-module projects are used only for Microservices Development.
+>>
+	settings.xml file is used for entire workspace.
+	Pom.xml file used for Project.
+	worskpace--30 project----30
+In setting.xml we are going to configure below
+1)Local repo path
+2)Proxy server details.
+3)Corporate repo data.these are more secure.
+4)profiling will also be handled
+5)Plugin management
+		>Corporate repo will be created by Devops team.
+>>Who will create .m2?
+ans)Maven
+
+How many local repo?
+ans)1
+	
+Assume ther is no maven,then develooper shld donwload dependencies manually and he need to add to build path.This is a tedious job.
+
+How do u differenciate between maven and normal project?
+
+ans)In project if we see pom.xml file then it is maven project.
+
+Can we convert normal java project to maven project?
+ans) Yes
+
+Can we disable maven in maven project?
+ans) Yes
+
+Transitive dependencies:
+======================== means whenever parent dependencies are loaded then child dependencies shld be loaded,if not loaded project build will fail.
+>MAven will take necessary care to get of child dependency issues in maven.
+>Maven can also create a project from scracth.this feature is called as SCAFFOLDING.
+
+>Some time maven settings are good,and pom.xml is free from errors.
+But still i am getting errors?
+sol)do force update
+
+
+
+
+
 
 
 
