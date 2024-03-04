@@ -20,3 +20,41 @@ Enabling spring security on a spring boot application is so simple. Just add the
 
 Spring Security supports integration with all of these technologies.
 --------------------------------------------------------------------
+HTTP BASIC authentication headers
+HTTP Digest authentication headers
+HTTP X.509 client certificate exchange
+LDAP (Lighweight Directory Access Protocol)
+Form-based authentication
+OpenID authentication
+Automatic remember-me authentication
+Kerberos
+JOSSO (Java Open Source Single Sign-On)
+AppFuse
+AndroMDA
+Mule ESB
+DWR(Direct Web Request)
+
+LDAP (Lightweight Directory Access Protocol):
+-----------------------------------------------
+That is an open application protocol for managing and interacting with dispersed directory information services over the Internet Protocol.
+
+JAAS (Java Authentication and Authorization Service) LoginModule:
+---------------------------------------------------------------------
+This is a Java-based Pluggable Authentication Module. It is supported by Spring Security’s authentication procedure.
+
+Web Form Authentication:
+-----------------------
+Web forms capture and authenticate user credentials from the web browser during this procedure. While we wish to build web form authentication, Spring Security supports it.
+
+Digest Access Authentication:
+----------------------------
+We can make the authentication procedure more secure with this functionality than with Basic Access Authentication. Before delivering sensitive data over the network, it requests that the browser verify the user’s identity.
+
+ HTTP Authorization:
+----------------------
+Using Apache Ant paths or regular expressions, Spring provides this functionality for HTTP authorization of web request URLs.
+
+ Basic Access Authentication:
+----------------------------------
+Spring Security has support for Basic Access Authentication, which is used to give a user name and password when performing network requests.     
+
