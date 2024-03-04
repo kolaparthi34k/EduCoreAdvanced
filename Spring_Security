@@ -1,0 +1,22 @@
+Spring Security is a framework that enables a programmer to impose security restrictions to Spring-framework–based Web applications through JEE components.
+>Spring Security operates in two major areas: Authentication and Authorization.
+
+Authentication
+==============
+Authentication means that, while accessing certain restricted resources, the user actually is the right person to do so. There are two processes to make sure 
+that the user is authentic: identification and verification. For example, a user is authenticated through their username and password, which is typically stored
+in a database.
+
+Authorization
+==============
+Authorization determines the extent of a user’s right to access restricted resources. It ensures that a user is allowed to access only those parts of the resource 
+that one has been authorized to use. The user roles come as part of the authorization.
+
+Enabling spring security on a spring boot application is so simple. Just add the spring security dependency in the pom.xml
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+Spring Security supports integration with all of these technologies.
+--------------------------------------------------------------------
