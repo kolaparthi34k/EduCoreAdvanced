@@ -1,0 +1,10 @@
+@RequestMapping===>The class-level @RequestMapping annotation maps a specific request path or pattern onto a controller.
+@ResponseEntity===>ResponseEntity represents an HTTP response, including headers, body, and status. 
+While @ResponseBody puts the return value into the body of the response ResponseEntity also allows us to add headers and status codes.
+@GetMapping====> @GetMapping annotation is a composed version of @RequestMapping annotation that acts as a shortcut for @RequestMapping
+@SpringBootApplication===.=>
+@Service====>Spring boot service component is defined as a class file that includes the @Service annotation and allows developers to add business functionalities
+
+@Components====>Component is responsible for some operations
+@RestController====>RestController is used for making restful web services with the help of the @RestController annotation.
+@RestController=@Controller + @ResponseBody
