@@ -1174,6 +1174,640 @@ Transitive dependencies:
 >Some time maven settings are good,and pom.xml is free from errors.
 But still i am getting errors?
 sol)do force update
+===============================================
+Spring:
+https://spring.io/
+>>Spring is an application framework and IOC container for Java.
+>Spring is a group of projects or modules.
+>Out of these modules to design any app using Spring,we shld be clear in fundamentals of "Dependency injection" basics.
+
+>>Where we will use Spring?
+ans)Using Spring we  can design below types of apps.
+1)Cloud
+2)Microservices
+3)Servelerless
+4)Reactive
+5)Eventdriven
+6)Webapp
+7)Batch
+
+  <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+
+TO design any Spring Core App,we need to have below files.
+1)POJO class/Java Bean(minimum 1 or max any no)
+2)Testclass
+3)applicationcontext.xml(1 or some times based on requiremnt we can create any no)
+4)pom.xml(only 1)---for dependencies
+
+Like core java, in spring we are having Spring Core.
+>Spring core concepts are basic concepts to design Springboot and Spring MVC apps.
+
+Spring works on the principle of Dependency Injection.
+
+>>Injecting something to a boy.
+
+Who is injecting? doctor----injecting is done by developer via applicationxontext.xml file
+To whom theya re injecting?boy---Constructor injection
+Purpose? to get ride of infections----loose coupling
+source/device?sireen---------Spring IOC Container
+
+in spring,how do we know whther app is working as per expectation?Using Testclass
+
+Spring is mainy used to reduce tight coupling between the classes or code.
+
+tight coupling---more dependency
+loose coupling---less/no dependency
+
+Assssume there is a class A and B.
+
+A cannt exist without B,then A is tightly coupled with B.
+
+If tightly coupled,below are the problems
+1)infuture if we change code in B,then it will effect A class.
+
+Assssume there is a class A ,C, B.
+
+C class can execute evenwihtout A,B---loose coupled
+
+drawback with Tightcoupling:
+1)Unnecessarily we need to disturb code.
+2)More Tests shld be conducted whether code is working as per expectation.
+3)We cant add new features to existing code easily.
+4)There might be integrity issues in future.
+
+>>To achive same,we need to use Dependency Injection stratagies.
+>To implement or run Dependency Injection,we need IOC(inversion of control) container.
+
+Example for Tight Coupling?
+Types of Dependency Injection stratagies?
+Ways to write configurations in Spring?
+
+Spring Core: 6.1.4--not stable
+
+Spring 3.x,5.x,6.x
+
+>Spring is full of configurations.
+
+In S/w to write configurations,we need to below styles.
+1)Xml---slow in terms of performance.beacuse parsing will take more time.xml wont support collections.
+2)JSON--faster that XML
+3)Bson---More faster than Bson
+4)YAML or YML---Universal acceptor.supports collections
+
+In Spring to write config,we can use any of below:
+xml
+yaml
+Annotations: Annotations are part of java.
+>Always xml files shld be in src/main/resources.
+
+Tight coupling Example:
+======================
+To perform dependency injection we can do it using Constructors or methods.
+
+>I can initiialize class level variables thru constructors.
+
+id in bean tag is used to diffrenciate between bean tags.
+
+>>We are initlializing class variables thru constructor injection via application.xml.
+
+>>For Spring core app,execution starts from main method.
+>>spring core is like nuts and bolts to deisgn an app.
+>>Configuration file name can be any valid name.Better to use the below name: applicationContext.xml
+ClassPathResource will load ur xml file into memory for execution.
+>>XmlBeanFactory class will create Objects and it will intilialize objects for pojo classes based on the xml file.
+
+Spring Bean Lifecycle:
+
+ioc Container starts-->BEAN INITIALIZED--->dEPENDENCIES WILL BE INJECTED----->INIT METHOD WILL BE CALLED BY CONTAINER---->UTILTITY METHODS WILL BE CALLED---->DESTROY METHOD WILL BE CALLED at the end automatically by IOC conatiner.
+Annotations--- no need to use any XML files.
+
+To run the Spring app,spring provides ur 2 types of containers.
+1)Application context
+2)Beanfactory
+
+>to run java app----JVM
+>to run Spring app---JVM+IOC container
+>Spring Web app-------JVM+IOC+Web server
+-------------------------------------------
+Setter Injection:
+======================
+>Spring supports following collections.
+1)List
+2)set
+3)map
+
+Rules to follow while writing Setter and Constructor Injections:
+========================
+1)POJO classes shld be in seprate class and testclass shld be in separate package.
+2)If we use both constructor and setter injection at  a time in java code,IOC container will use only setter injection.
+
+In short,setter injection overrides Constructor injection.
+3)Partial injection of the properties can be done through setter injection,but the same is not possible thru Constructor injection.
+
+
+AutoWiring:
+============
+>This is important feature when we want to implement layered architecture in Spring /Springboot App.
+>in projects we will design code using Layered architecture.
+Writing huge xml file is tedious job.
+>at 11am feb 29th, class B----a,b,c,d,e,f
+on March 9th,b propertie
+
+>what if spring performs these above mappings automatically?
+As spring is handling these mappings,developer can reduce the xml instructions in xml file.but remeber xml file is mandetory.
+===================================================================
+>>Auto works for objects and class.
+Disadvantage: Developer will not have any control on code.ie a new person into the team he cant understand code.
+Autowiring can be used or not applicable for primitive datatypes and string value.
+
+>>By default autowiring internally uses setter injection.
+Modes is autowiring:
+====================
+1)no--default
+2)byName
+3)byType
+4)constructor
+5)Autodetect
+>>><dependency>  
+    <groupId>javax.servlet</groupId>  
+    <artifactId>servlet-api</artifactId>  
+    <version>3.0-alpha-1</version>  
+</dependency>
+==============>
+mojo error--->Maven issue---we need to add maven plugin in pom.xml
+<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+			</plugin>
+		</plugins>
+		
+>>Spring MVC
+-------------
+>>MVC--model view controller
+>>Spring mVC is used for designing web apps.
+>>JSP andn servlets are server side technologies to design webapps.
+In MVC we are having 2 types of architectures.
+MVC1---JSP acts as controller
+MVC2---Servlet will acta as controller
+
+>Spring MVC follows MVC2 architecture.
+https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html
+
+M---model contains data of the appliction.
+Controllers job is to control the flow of traffic.
+>>In spring MVC, controller is also called as "Dispatcher serverlet" or "front controller".
+
+Moving from one menu/page to another menu/page is called as Routing.
+>>view--JSp/html page
+viewresolver is predefined.
+
+prefix means folder path of jsp
+suffix means its extension.
+
+>As soon as we run any spring MVC app,it will automatically load/run startup file which is index.jsp.
+
+Web.xml------Dispatcher servlet---Per project only 1
+index.jsp----html code
+src/main/java---controller code
+pom.xml---dependencs needed
+spring-servlet.xml----viewresolver code
+
+Dispatcher servlet is main controller.it shld be only 1.dispatcheer servlet is configured in web.xml file.
+
+We can have as many child controllers.
+>The DispatcherServlet handles all the HTTP requests and responses.
+
+After receiving an HTTP request, the DispatcherServlet consults the HandlerMapping to call the appropriate Controller.
+
+The Controller takes the request, calls the appropriate method, and builds the model and returns the view page name to the DispatcherServlet.
+
+The DispatcherServlet will then take help from the ViewResolver to pick up the defined view page for the request.
+
+Once the view is finalized, the DispatcherServlet passes the model data to the view, which is finally rendered on the browser.
+
+@Controller---This is an indication to IOC container the current class is controller.
+@Controller shld be used before class not before method.
+==================>
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+>>How do IOC container recognize controller?
+ans)@Controller
+
+Hpw do IOC knows the location of contrroller ie which package and its address?
+sol) thru component-scanning
+
+Component-scanning will scann the entire code and will identify controllers.
+>>
+Component Scanning 
+Annotation
+ 5 to6 years back ago,we need to write huge xml files for sharing meta data with server or JVM.
+
+To overcome these problems,Oracle had released Annotations into the market.
+
+Annotation are alternative to XML.
+Annotations starts with '@'.Annotations provides necesaary metadata to JVM.
+
+Annotations are of 2 types.
+1)predefined
+2)Userdefined
+>In MVC we are going to use web MVC annotations.
+ 
+@Controller----IOC can understand that the current class is a controller.
+>><mvc:annotation-driven/>---provides metadata to JVM
+Mote: Never test any web app  in Eclipse browser.
+
+SpringMVC
+==========================
+Spring AOP and validations
+------>
+Springboot
+==========
+>>IDE: Spring STS---heavy weight than eclipse
+Eclipse--lightweight when we compare with STS
+>>Spring STS--4.x--3.x---wont support 8.x version.
+Theia IDE
+>>>https://spring.io/quickstart
+Drawbacks of Spring:
+==================
+1)One of the Common Maven problem is Dispatcher servlet not found  issue.--can be overcomed using Autoconfig feature in springboot
+2)Writing more config files.---very less config files
+3)we need to configure server ie tomcat.---Embedded/inbuilt server
+4)If we use spring for deisgning Cloud and Microservices app,code size will drastically increase.---less no of lines of code
+5)writing huge xml files.---no xml file except pom.xml
+6)Profling is a manually approach.---using @Profile we can complete
+7)Learning curve is very high.----less learning
+8)No developer tools like autorestart/reload----Springboot has inbuilt tools
+----------
+Springboot 3.x version
+>>TO design springboot app,we can go with the below ways.
+1)Springboot CLI
+2)Spring STS/Eclipse
+3)MAven/Gradle 
+4)Using Spring initializer.https://start.spring.io/
+
+Note: All above 3 approaches uses 4 approach internally.
+
+Always try to avoid SNAPSHOT versions in development.
+
+spring init --dependencies=web,data-jpa my-project
+spring init --build=maven --java-version=17 --dependencies=websocket --packaging=war sample-app.zip
+=======================
+>>Springboot has only 1 configuration file through wwe can control or add features to the app.
+
+application.properties or application.yaml
+
+propereties file will be in src/main/resources.
+>Properties is a collection were data will be in key and value format.
+>in application.properties,keys are predefined and values are user defined.
+>
+In spring/Springboot,while creating packages we need to follow below rule.If violated controlled cannt be identified by Dispatcher sevlet.
+
+com.hughes
+.hughes.controller
+
+Port rule:
+
+port no cannt start with 0.
+Because of security concerns,some orgs wont allow you to use
+ports which starts with 1,2,3,4,5.
+1,2,3,4,5,6
+
+Suggested is 8
+
+>>Going forward dont use localhost.use ur ipaddress
+
+"not secure"---that means no ssl certificate.
+---->
+In Spring/Springboot,to perform webpage validations we can use the below.
+1)Hibernate validator
+2)JSR(java specification requirement) Validator
+
+Get----@GetMApping
+put----@PutMApping
+Post---@PostMapping
+delete---@DeleteMapping
+or
+@RequestMapping
+@Controller
+@SpringBootApplication
+>>>>>
+Observations:
+web.xml is not created
+spring-servlet.xml--not created
+we just added springstarter web dependency.
+We didnt added spring core and spring web separetly.
+>>Why wee added jasper separetly in pom.xml?
+to run servlet we need Catalina jar
+to run jsp programs we need Jasper jar.
+>>Here tomcat is inbuilt.We dint configured anything for tomcat.
+
+Note:tomcat is embedded.
+what if i want weblogic server in my springboot?Is it inbuilt?
+ans)No.weblogic not inbuilt.
+Only tomcat,jetty,netty,undertow
+Also commercial servers are not inbuilt in springboot.
+...Example: Pramathi server...
+=====================================================
+@SpringBootApplication:
+-----------------------
+How do springboot recognize your controller/Service/Repository? it will scan the entire project,component:scan
+How spring spring is config dispatcher servlet?
+who loaded beans into IOC container?
+
+In Spring,@Controller,@Service,@Repository,@Component are called as Stereotype annotations/types.
+
+for all the above questions?
+@SpringBootApplication=@Configuration+@ComponentScan+@EnableAutoConfiguration
+@ComponentScan==it will scan ur packages and subpackages and registers the bean with IOC container.
+
+>>We didnt configured dispatcher servlet in any file in springboot.In the case of springboot beacuse of "AutoConfiguration" feature,based on the starter it will recognize the type of dependency and will perfrom necssary actions with developer involvement.
+
+Autoconfig will work based on the starter that we give in pom.xml.
+
+@Configuration:In spring we can write configurations in the form of class.Whatever we wrote in spring-servlet.xml,the same can be written in classes and Object way.
+
+@Service---in this layer we are going to write Business logic.
+@Controller----Controller logic and view related
+@Repository----DAO classes that interact with database
+
+DAO: DAO stands for data access Object.A DAO class is a class with only CRUD operations.
+>DAO is also a design pattern.
+
+In spring ,we are calling asd Dependency
+In springboot,we call dependency as "STARTER".
+
+redis server---->Spring-boot-starter-redis
+mongo----Spring-boot-starter-mongo`
+
+>>Commandline runner:
+=======================
+SpringApplication.run===command line runner.
+The main use of the above command is
+1)it will start the Application
+2)Initializes and configures beans,properties and app context.
+3)Commandline runner methods will be executed.
+4)After 1,2,3 steps  the app will start working.
+---------------------------------------------------------
+6-MArch-2024
+SpringBoot AOP
+Spring Security
+Unit testing in Spring
+mappings in springboot
+=========================
+SpringBoot JDBC
+WebServices Introduction
+Springboot Restfull services
+Connection Pooling and Datasources
+JPA Introduction and Sample App
+------------------------>>>
+Springboot Layered Architecture+JDBC(connection pooling)
+Spring JDBC vs SpringBoot JDBC:
+1)In spring JDbc we need to write more xml files and config files,but in springboot jdbc no xml files.
+2)in spring jdbc we need to add multiple dependencies,but in springbootjdbc,we need to add only one starter Spring-boot-starter-jdbc.
+
+We are opening the connection and we are closing connection in jdbc.but if we go with Spring boot/spring jdbc,no need to close connection manually.There is autoclosing feature.
+>>It can exceptions automatically.
+>>Springboot JDBC uses "Connection pooling mechanism",but normal jdbc wont use the same.
+>>springboot jdbc is built on JDBC.
+
+If we want to perform CRUD operations on Db using Spring boot,below are the ways.
+1)Springboot JDbc
+2)Springboot + ORM
+3)Springboot + Hibernate
+4)AOP
+
+Connection pooling mechanism:
+=============================
+DataSource: datasource means any thing that emits data/origin point for data.
+
+Connection pooling: pooling means group of connection objects.
+
+Assume if somebody is giving that object and we are reusing it?
+
+Shubham: Bhuvaneswar----Vizg
+
+Thru car?
+
+is there any rule that shubham shld purchasee new car to go to vizag
+or will he hire a car
+rent:u will get a car on hourly basic---rent
+
+MAruthi cars--swift---9am 1pm----9pm to 1am--9am
+
+car---db object
+car garrage/car agency------database
+After his travel he will handover car to that car agency--amount
+
+Connection pooling is a pool of readymade db connection objects which are maintained by Connection pooling providers and db vendors.On request one db connection object will given to us and after the usage we will handover that object back to Provider.
+
+Note:Connection pooling feature will be dependent on the type of database that you were using.
+
+requester------request db obejct----------------->Databse+connection pool provider
+                      -------------will grant db connection
+					  requester will use that object
+After usage he will handover that object back to db connection pool provider
+
+Case 2: if requester is not using the db object for some time,that db object will be automatically handed back to db.
+
+srinivas had 2 cars--car1 car2 he uses car1 most frequently
+Car2 for evry 3 months.
+
+srinivas is loosing.srinivas got suggestion from Rahul.y dont u give to ola or uber for rent.so that u can generate money.
+
+In connection Pool ,we are going to have pool of readymade db objects.
+how many db objects?
+ans)it depends on available memory on server,Database and Processor
+
+Connection pool mechanism can be achieved using below 3rd party library.
+1)DBCP
+2)C3PO
+3)Hikari connection Pooling---market leader(https://github.com/brettwooldridge/HikariCP)
+4)Server side connection pooling---Webserver/App server
+
+CommandlineRunner :
+======================
+>Commandlinerunner is an interface in spring boot.
+>It has only one abstract method "run".
+>When a class implements this interface,springboot will automatically call run method.
+>>This interface is used for db initlialization at starting of the app,or if u want to perform startup activities then we are going to use this.
+>>This commandline runner will run ur code after springbootbeans intilializing and loading is completed.
+
+SpringBoot Restfull Services
+=============================
+>Java is not language independent,it is platform independent.
+>To achieve language independency in java,w3c along with Sun microsystems had come up with solution called as "WEBSERVICES".
+>>Webservices client-server architecture.
+>to make communication between 2 diffrent apps which were designed using differnt programming languages,we use webservices.
+>>webservices will transfer the data between 2 machines using XML.
+>As xml is heavy weight ,now evrybody is using JSON.
+>>Webservices are of 2 types.
+1)SOAP---xml--heavy weight---more secure(all legacy services are in soap)
+2)REST---xml/json---light weight----less secure
+>>rest worrks on http/https protocl.
+>We can use SOAP for mobile apps.All mobile apps uses RESt services only as it is light weight and it uses JSON.
+>>Restfull services can be created using any:
+1)Groovy
+2)Scala
+3)Spring Restfull
+4)SpringBoot rest
+5)Jersy
+6)RestEasy fw 7)Python django rest....etc
+
+web services we will have 2 actors
+1)Publishers/producer
+2)consumers
+
+SpringBoot rest+Reactjs
+reactjs/Angular---consumer
+Producer----Springboot rest
+SOAP---SOapUI tool for consuming
+>>A consumer can be an app,webservice,browser.
+3rd party agents: postman/rest IDE
+
+@Controller-----MVC
+Springboot rest----
+
+@RestController-----Restfull services
+@RequestMapping
+@Post---@PostMapping
+@Get----@GetMApping
+@delete---@DeleteMapping
+>>Springboot gives one inbuilt database called as h2.
+h2 shld be used for training and POC purpose.Dont use this production environements.
+mem--datasource name/inmemory
+
+jdbc:h2:mem:training
+>>>>>>>>>>>JPA----Java Persistance API
+Springboot+JDBC
+Springboot+ JPA
+@RequestBody
+@ResponseBody
+anything that we get from server is called as response.
+
+Post----->we are pushing data to database thru body.
+>>JPA removes unnecessary writing of code.
+
+JPA repository
+>>JPA advantages
+Vendors---Hibernate is implementor of JPA
+ORM---object relation Mapping
+
+>>>Springboot JDBC
+
+write springboot jdbc code for below operations
+
+aadhar no
+citizen name
+citizen mobileno
+Addresss
+Income
+State
+
+CRUD Operations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
