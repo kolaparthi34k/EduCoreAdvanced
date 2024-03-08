@@ -1711,6 +1711,185 @@ Income
 State
 
 CRUD Operations
+==========================================================
+try {
+    connection = DriverManager.getConnection(jdbcURL, username, password);
+     
+    Statement statement = connection.createStatement();        
+     
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email1', 'pass1', 'Name 1')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email2', 'pass2', 'Name 2')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email3', 'pass3', 'Name 3')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email4', 'pass4', 'Name 4')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email5', 'pass5', 'Name 5')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email6', 'pass6', 'Name 6')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email7', 'pass7', 'Name 7')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email8', 'pass8', 'Name 8')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email9', 'pass9', 'Name 9')");
+    statement.addBatch("INSERT INTO users (email, pass, name) VALUES ('email0', 'pass0', 'Name10')");
+ 
+    int[] updateCounts = statement.executeBatch();
+ 
+    for (int count : updateCounts) {
+        System.out.println(count);
+    }
+     
+    connection.close();
+     
+} catch (SQLException ex) {
+    ex.printStackTrace();
+}
+=============
+Login Screen---Html,bootstrapjs,css,javascript
+
+Spring provides us form validations feature.
+
+Validations are of 2 types
+1)client side/browser side validation
+2)Server side validations
+
+Spring provides below to perform client side validations.
+1)Spring validations
+2)JSR validations--javax.validation---https://beanvalidation.org/
+3)Hibernate validation--org.hibernate
+
+====================
+Springboot development tools:
+=============================
+n>LiveReload-- to use live reload on browser we need to install live relaod plugin on browser.
+Drawback with live reload: Browser wil crash most frequently.
+https://chromewebstore.google.com/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?pli=1
+ <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+    </dependency>
+	to springboot Projects pom.xml file.
+>>Remote debugging
+>Remote Update or restart
+===========================================
+Testing:
+-----------------
+
+Testing can be performed in 2 ways.
+1)Manual testing
+2)Automation testing(example: selenium)
+>>To check for vulnarabilities
+>>To check defects.
+>to check whther we had got expected output
+>To design quality product we need to do testing.
+
+In java,to perform testing we can below frameworks/tools.
+1)Junit(java unit testing framework)
+2)Mockito
+3)Power mock
+>>JUnit basics
+
+Junit+Mockito
+Versions: Junit4 and Junit5
+
+>>In testing,we will 2 parameters.
+
+expected output actual output
+Always expected and actual shld be same
+>>To perform above we need to use Assertions in junit.
+>>Testcasess will have 2 states
+1)Green-----Success
+2)RED----failure
+
+in project do we need to use 100% succes intesting?
+ans)min 85%
+
+>>>I want to test a functionality whether the function is executing with in 1000ms.
+>>how do test whether dbconnection is established with in lesstime in jdbc?
+
+>>If we want to make junti to ignore a particular test case from running,simply use @Ignore.
+
+>>To perform unittesting of controller,service and repository we can use springboot-starter-test.
+>springboot-starter-test internally uses Junit to perform unit testing.
+-------------------------------------
+JPA
+====
+>>JPA is a specification.
+Tools like Hibernate,Toplink uses JPA specifications.
+>>Using JPA we can reduce no of lines of code fr CRUD operations.
+>>is SQL independent or dependent?
+ans) SQL is db dependent.
+>SQl queries will vary from db to db.Then it will be difficult for a devloper to write code for different databses.---JPA had come up with one solution JQL/JPQL--java persistance Query language
+>>JQL queries are independent.JQL queries looks like SQl,but it will run on any db.
+>>IN Jpa no need to close any DB connections manually.
+>>JPA Provides ORM feature.
+>>JPA provides mappings between tables
+>JPA provides algorithms for primary key genrations.
+
+ORM:Object relation mapping
+
+JPA----auto dll feature
+
+it will convert POjo class to table and table to POjo class.
+@Entity
+@Table
+class Empployee
+{
+private int no;
+private String name;
+}   ------------------converted to table Employee---no name
+
+Reverse engineering---table to class conversion--? yes
+
+ORM Relationships----one to one
+One to many
+many to one
+
+SpringBoot Security:
+==============================
+Springboot starter security---add in pom.xml.
+>security features in Spring boot will be enabled for ur app.
+Springboot gives so many features for security using less no of lines of code.
+1)As soon as we add security dependecny springboot will perform autoconfiguration and will enable security.
+2)
+features:1)filters---Antisamy filters,OWASP filters
+2)Oauth1.0
+3)Oauth2.0-mostly used
+4)LDAP 
+5)SAML
+6)JSON token---mostly used
+7)Kerberos
+8)in-memory login credentials
+
+1,2,3,4,5,6,7,8++++are used for Autherntication and authrorization in Springboot
+9)Http based authentication---basic for testing and training
+10)Easy integrate Springboot with 3rd party security tools.
+
+Spring AOP introduction:
+========================
+>>AOP stands for Aspect orient programming.
+>AOP for modularity and middleware services.
+Middleware services/cross cutting concerns.:
+========================================
+tx management
+Connection pool
+Logging
+Security.....etc
+---------------
+Aspect:this is class where we are going to write cross cutting concerns.
+Advice:What action shld be taken.
+joinpoint:When to apply concerns in the program
+pointcut:Expression for Advice ie where to apply advice
+
+Example:
+mod1
+mod2
+mod3
+mod4
+mod5
+Customter asked u to insert logging at mod3.
+
+
+
+
+
+
 
 
 
